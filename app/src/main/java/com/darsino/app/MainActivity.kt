@@ -67,8 +67,8 @@ val PurpleSoft = Color(0xFF8E5BD0)
 val Orange = Color(0xFFFF9F1C)
 val OrangeLight = Color(0xFFFFA94D)
 val DarsinoFont = FontFamily.SansSerif
-private val DOT_DX = (-60).dp        // موقعیت نقطه «ن» (اگه جا نیفتاد تغییرش بده)
-private val DOT_DY = (-52).dp
+private val DOT_DX = (-42).dp
+private val DOT_DY = (-58).dp
 const val API_BASE = "https://YOUR-SERVER.com/api" // آدرس سرور خودت
 
 data class Profile(val name: String, val role: String, val info: String)
