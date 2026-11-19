@@ -152,10 +152,10 @@ fun EntryScreen(onLogin: (Profile) -> Unit) {
     val scope = rememberCoroutineScope()
 
     LaunchedEffect(Unit) {
-        logoAlpha.animateTo(1f, tween(300))
-        logoOffset.animateTo(0f, tween(300, easing = FastOutSlowInEasing))
-        delay(100)
-        expand.animateTo(1f, tween(600, easing = LinearEasing))
+        logoAlpha.animateTo(1f, tween(400))
+        logoOffset.animateTo(0f, tween(500, easing = FastOutSlowInEasing))
+        delay(200)
+        expand.animateTo(1f, tween(1200, easing = LinearEasing))
         delay(200)
         showForm = true
     }
