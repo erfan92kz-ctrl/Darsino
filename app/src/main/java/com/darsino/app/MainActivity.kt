@@ -68,7 +68,7 @@ val Orange = Color(0xFFFF9F1C)
 val OrangeLight = Color(0xFFFFA94D)
 val DarsinoFont = FontFamily.SansSerif
 private val DOT_DX = (-42).dp
-private val DOT_DY = (-58).dp
+private val DOT_DY = (-18).dp
 const val API_BASE = "https://YOUR-SERVER.com/api" // آدرس سرور خودت
 
 data class Profile(val name: String, val role: String, val info: String)
@@ -142,6 +142,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun EntryScreen(onLogin: (Profile) -> Unit) {
     val logoAlpha = remember { Animatable(0f) }
+    val logoOffset = remember { Animatable(28f) }
     val expand = remember { Animatable(0f) }
     var showForm by remember { mutableStateOf(false) }
     var code by remember { mutableStateOf("") }
@@ -150,10 +151,11 @@ fun EntryScreen(onLogin: (Profile) -> Unit) {
     val scope = rememberCoroutineScope()
 
     LaunchedEffect(Unit) {
-        logoAlpha.animateTo(1f, tween(1000))
-        delay(500)
+        logoAlpha.animateTo(1f, tween(400))
+        logoOffset.animateTo(0f, tween(700, easing = FastOutSlowInEasing))
+        delay(200)
         expand.animateTo(1f, tween(2000, easing = FastOutSlowInEasing))
-        delay(1000)
+        delay(800)
         showForm = true
     }
 
@@ -177,12 +179,12 @@ fun EntryScreen(onLogin: (Profile) -> Unit) {
             fontFamily = DarsinoFont,
             fontSize = 64.sp, fontWeight = FontWeight.Bold,
             color = Purple,
-            modifier = Modifier.align(Alignment.Center).alpha(logoAlpha.value)
+            modifier = Modifier.align(Alignment.Center).offset(y = logoOffset.value.dp).alpha(logoAlpha.value)
         )
 
         // دایره نارنجی: از نقطه «ن» بزرگ می‌شود و کل صفحه را می‌گیرد
         Canvas(Modifier.fillMaxSize()) {
-            val center = Offset(size.width / 2f + DOT_DX.toPx(), size.height / 2f + DOT_DY.toPx())
+            val center = Offset(size.width / 2f + DOT_DX.toPx(), size.height / 2f + DOT_DY.toPx() + logoOffset.value.dp.toPx())
             val corners = listOf(
                 Offset(0f, 0f), Offset(size.width, 0f),
                 Offset(0f, size.height), Offset(size.width, size.height)
