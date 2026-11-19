@@ -68,7 +68,7 @@ val PurpleSoft = Color(0xFF8E5BD0)
 val Orange = Color(0xFFFF9F1C)
 val OrangeLight = Color(0xFFFFA94D)
 val DarsinoFont = FontFamily.SansSerif
-private val DOT_DX = (-52).dp
+private val DOT_DX = (-38).dp
 private val DOT_DY = (-18).dp
 const val API_BASE = "https://YOUR-SERVER.com/api" // آدرس سرور خودت
 
