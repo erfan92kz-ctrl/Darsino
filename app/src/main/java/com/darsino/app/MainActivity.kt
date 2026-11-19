@@ -11,7 +11,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.FastOutSlowInEasingimport androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.slideInVertically
@@ -67,7 +67,7 @@ val PurpleSoft = Color(0xFF8E5BD0)
 val Orange = Color(0xFFFF9F1C)
 val OrangeLight = Color(0xFFFFA94D)
 val DarsinoFont = FontFamily.SansSerif
-private val DOT_DX = (-42).dp
+private val DOT_DX = (-52).dp
 private val DOT_DY = (-18).dp
 const val API_BASE = "https://YOUR-SERVER.com/api" // آدرس سرور خودت
 
@@ -154,7 +154,7 @@ fun EntryScreen(onLogin: (Profile) -> Unit) {
         logoAlpha.animateTo(1f, tween(400))
         logoOffset.animateTo(0f, tween(700, easing = FastOutSlowInEasing))
         delay(200)
-        expand.animateTo(1f, tween(2000, easing = FastOutSlowInEasing))
+        expand.animateTo(1f, tween(3500, easing = LinearEasing))
         delay(800)
         showForm = true
     }
