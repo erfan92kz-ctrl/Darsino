@@ -66,7 +66,7 @@ val Purple = Color(0xFF5E2CA5)
 val PurpleSoft = Color(0xFF8E5BD0)
 val Orange = Color(0xFFFF9F1C)
 val OrangeLight = Color(0xFFFFA94D)
-val DarsinoFont = FontFamily.Cursive // بعداً فونت دلخواه رو به res/font اضافه کن
+val DarsinoFont = FontFamily.SansSerif
 private val DOT_DX = (-60).dp        // موقعیت نقطه «ن» (اگه جا نیفتاد تغییرش بده)
 private val DOT_DY = (-52).dp
 const val API_BASE = "https://YOUR-SERVER.com/api" // آدرس سرور خودت
@@ -175,7 +175,7 @@ fun EntryScreen(onLogin: (Profile) -> Unit) {
         Text(
             "درسینو",
             fontFamily = DarsinoFont,
-            fontSize = 56.sp,
+            fontSize = 64.sp, fontWeight = FontWeight.Bold,
             color = Purple,
             modifier = Modifier.align(Alignment.Center).alpha(logoAlpha.value)
         )
