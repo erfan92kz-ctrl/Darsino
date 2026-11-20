@@ -270,7 +270,7 @@ fun EntryScreen(onLogin: (Profile) -> Unit) {
         Text("ورود دبیران", fontWeight = FontWeight.Bold)
     }
     Button(
-        onClick = { },
+        onClick = { onLogin(Profile("مهمان", "student", ""))},
         colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Color.Black),
         shape = RoundedCornerShape(16.dp),
         modifier = Modifier.weight(1f).height(50.dp)
