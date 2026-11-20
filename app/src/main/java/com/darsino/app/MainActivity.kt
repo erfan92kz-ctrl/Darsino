@@ -258,7 +258,8 @@ fun EntryScreen(onLogin: (Profile) -> Unit) {
             }
             */
             Row(
-    modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp),
+    modifier = Modifier.fillMaxWidth().padding(start = 24.dp, end = 24.dp, bottom = 120.dp),
+
     horizontalArrangement = Arrangement.spacedBy(12.dp)
 ) {
     Button(
