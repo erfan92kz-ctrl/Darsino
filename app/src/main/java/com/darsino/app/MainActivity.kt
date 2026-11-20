@@ -556,6 +556,44 @@ fun newMathQ(): MathQ {
 }
 
 @Composable
+@Composable
+fun GradeSelectScreen(onGrade: (String) -> Unit) {
+    val grades = listOf("اول", "دوم", "سوم", "چهارم", "پنجم", "ششم")
+    val lastGrades = listOf("هفتم", "هشتم", "نهم")
+    Column(
+        modifier = Modifier.fillMaxSize().background(Color.White).padding(20.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text("بازینو", fontWeight = FontWeight.Bold, color = Purple, fontSize = 22.sp)
+        Spacer(Modifier.height(24.dp))
+        grades.chunked(2).forEach { row ->
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                row.forEach { name ->
+                    Button(
+                        onClick = { onGrade(name) },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Purple),
+                        border = androidx.compose.foundation.BorderStroke(1.dp, Purple),
+                        shape = RoundedCornerShape(16.dp),
+                        modifier = Modifier.weight(1f).height(56.dp)
+                    ) { Text("پایه $name", fontWeight = FontWeight.Bold) }
+                }
+            }
+            Spacer(Modifier.height(12.dp))
+        }
+        Spacer(Modifier.height(12.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            lastGrades.forEach { name ->
+                Button(
+                    onClick = { onGrade(name) },
+                    colors = ButtonDefaults.buttonColors(containerColor = Orange, contentColor = Color.White),
+                    shape = RoundedCornerShape(16.dp),
+                    modifier = Modifier.weight(1f).height(56.dp)
+                ) { Text("پایه $name", fontWeight = FontWeight.Bold) }
+            }
+        }
+    }
+}
 fun MathGameScreen() {
     var q by remember { mutableStateOf(newMathQ()) }
     var score by remember { mutableIntStateOf(0) }
@@ -579,10 +617,10 @@ fun MathGameScreen() {
                         onClick = {
                             if (opt == q.answer) {
                                 score += 10
-                                msg = "آفرین! 🎉"
+                                msg = "دسخوش🎉"
                                 q = newMathQ()
                             } else {
-                                msg = "نزدیک بود! دوباره امتحان کن 💪"
+                                msg = "!یه سوال به این آسونی رو باید جواب بدی💪"
                             }
                         },
                         colors = ButtonDefaults.buttonColors(containerColor = Purple),
