@@ -593,6 +593,7 @@ fun GradeSelectScreen(onGrade: (String) -> Unit) {
         }
     }
 }
+@Composable
 fun MathGameScreen() {
     var q by remember { mutableStateOf(newMathQ()) }
     var score by remember { mutableIntStateOf(0) }
