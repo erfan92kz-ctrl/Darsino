@@ -425,8 +425,8 @@ fun HomeContent(profile: Profile, onNav: (String) -> Unit) {
             modifier = Modifier.fillMaxWidth()
         ) {
             Column(Modifier.padding(16.dp)) {
-                Text("🎮 بازی ریاضی", fontWeight = FontWeight.Bold, color = Purple, fontSize = 18.sp)
-                Text("با بازی ریاضی یادبگیر و امتیاز بگیر!", color = Color.Gray)
+                Text("🎮 بازینو ", fontWeight = FontWeight.Bold, color = Purple, fontSize = 18.sp)
+                Text("با بازی یادبگیر و امتیاز بگیر!", color = Color.Gray)
             }
         }
     }
