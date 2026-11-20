@@ -247,7 +247,8 @@ fun EntryScreen(onLogin: (Profile) -> Unit) {
                 onClick = { doLogin("teacher") },
                 enabled = !loading,
                 colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Color.Black),
-                shape = RoundedCornerShape(16.dp),
+                shape= RoundedCornerShape(16.dp),
+                border = androidx.compose.foundation.BorderStroke(1.dp, Purple),
                 modifier = Modifier.padding(24.dp).fillMaxWidth().height(64.dp)
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
