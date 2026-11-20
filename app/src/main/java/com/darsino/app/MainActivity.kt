@@ -352,7 +352,7 @@ fun MainScreen(profile: Profile, onLogout: () -> Unit) {
                     "support" -> SupportScreen()
                     "help" -> ChatScreen("help", "راهنمای درسینو")
                     "exam" -> TeacherExamScreen()
-                    "game" -> GradeSelectScreen { }
+                    "game" -> GameFlowScreen()
                     "news" -> NewsScreen()
                 }
             }
