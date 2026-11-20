@@ -243,7 +243,7 @@ fun EntryScreen(onLogin: (Profile) -> Unit) {
             enter = fadeIn(tween(1000)),
             modifier = Modifier.align(Alignment.BottomCenter)
         ) {
-            Button(
+            /*Button(
                 onClick = { doLogin("teacher") },
                 enabled = !loading,
                 colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Color.Black),
@@ -255,6 +255,28 @@ fun EntryScreen(onLogin: (Profile) -> Unit) {
                     Text("کد ملی خود را وارد کنید", color = Color.Gray, fontSize = 12.sp)
                 }
             }
+            */
+            Row(
+    modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp),
+    horizontalArrangement = Arrangement.spacedBy(12.dp)
+) {
+    Button(
+        onClick = { },
+        colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Color.Black),
+        shape = RoundedCornerShape(16.dp),
+        modifier = Modifier.weight(1f).height(50.dp)
+    ) {
+        Text("ورود دبیران", fontWeight = FontWeight.Bold)
+    }
+    Button(
+        onClick = { },
+        colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Color.Black),
+        shape = RoundedCornerShape(16.dp),
+        modifier = Modifier.weight(1f).height(50.dp)
+    ) {
+        Text("ورود بدون شناسه", fontWeight = FontWeight.Bold)
+    }
+}
         }
     }
 }
