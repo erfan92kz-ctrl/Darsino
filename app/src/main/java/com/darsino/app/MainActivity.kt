@@ -556,7 +556,6 @@ fun newMathQ(): MathQ {
 }
 
 @Composable
-@Composable
 fun GradeSelectScreen(onGrade: (String) -> Unit) {
     val grades = listOf("اول", "دوم", "سوم", "چهارم", "پنجم", "ششم")
     val lastGrades = listOf("هفتم", "هشتم", "نهم")
