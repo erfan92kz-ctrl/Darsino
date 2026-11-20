@@ -618,7 +618,7 @@ fun MathGameScreen() {
                         onClick = {
                             if (opt == q.answer) {
                                 score += 10
-                                msg = "دسخوش🎉"
+                                msg = "خوشم اومد🎉"
                                 q = newMathQ()
                             } else {
                                 msg = "!یه سوال به این آسونی رو باید جواب بدی💪"
@@ -726,6 +726,51 @@ fun TeacherExamScreen() {
                     Text(r, modifier = Modifier.padding(16.dp), fontWeight = FontWeight.Bold)
                 }
             }
+        }
+    }
+}
+
+fun lessonsFor(grade: String): List<String> {
+    val common = listOf("پیام های آسمانی", "قرآن", "نگارش", "املا")
+    return when (grade) {
+        "اول", "دوم", "سوم", "چهارم", "پنجم" -> listOf("ریاضی", "علوم", "فارسی") + common
+        "ششم" -> listOf("ریاضی", "علوم", "فارسی", "انگلیسی") + common
+        "هفتم", "هشتم", "نهم" -> listOf("ریاضی", "علوم", "فارسی", "انگلیسی", "عربی", "تفکر و سبک زندگی") + common
+        else -> listOf("ریاضی", "علوم", "فارسی") + common
+    }
+}
+
+@Composable
+fun GameFlowScreen() {
+    var grade by remember { mutableStateOf<String?>(null) }
+    val g = grade
+    if (g == null) {
+        GradeSelectScreen { grade = it }
+    } else {
+        Column(
+            modifier = Modifier.fillMaxSize().background(Color.White).padding(20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text("پایه $g", fontWeight = FontWeight.Bold, color = Purple, fontSize = 22.sp)
+            Spacer(Modifier.height(24.dp))
+            lessonsFor(g).forEach { lesson ->
+                Button(
+                    onClick = { },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Purple),
+                    border = androidx.compose.foundation.BorderStroke(1.dp, Purple),
+                    shape = RoundedCornerShape(16.dp),
+                    modifier = Modifier.fillMaxWidth().height(56.dp)
+                ) { Text(lesson, fontWeight = FontWeight.Bold) }
+                Spacer(Modifier.height(12.dp))
+            }
+            Spacer(Modifier.height(12.dp))
+            Button(
+                onClick = { grade = null },
+                colors = ButtonDefaults.buttonColors(containerColor = Orange, contentColor = Color.White),
+                shape = RoundedCornerShape(16.dp),
+                modifier = Modifier.fillMaxWidth().height(56.dp)
+            ) { Text("بازگشت", fontWeight = FontWeight.Bold) }
         }
     }
 }
