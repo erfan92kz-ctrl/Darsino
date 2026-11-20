@@ -251,7 +251,7 @@ fun EntryScreen(onLogin: (Profile) -> Unit) {
                 modifier = Modifier.padding(24.dp).fillMaxWidth().height(64.dp)
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text("ورود معلم", color = Color.Black, fontWeight = FontWeight.Bold)
+                    Text("ورود دبیران", color = Color.Black, fontWeight = FontWeight.Bold)
                     Text("کد ملی خود را وارد کنید", color = Color.Gray, fontSize = 12.sp)
                 }
             }
