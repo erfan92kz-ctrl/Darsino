@@ -742,6 +742,7 @@ fun lessonsFor(grade: String): List<String> {
 @Composable
 fun GameFlowScreen() {
     var grade by remember { mutableStateOf<String?>(null) }
+    var selectedLesson by remember { mutableStateOf<String?>(null) }
     val g = grade
     if (g == null) {
         GradeSelectScreen { grade = it }
@@ -755,7 +756,7 @@ fun GameFlowScreen() {
             Spacer(Modifier.height(24.dp))
             lessonsFor(g).forEach { lesson ->
                 Button(
-                    onClick = { },
+                    onClick = { selectedLesson = lesson },
                     colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Purple),
                     border = androidx.compose.foundation.BorderStroke(1.dp, Purple),
                     shape = RoundedCornerShape(16.dp),
