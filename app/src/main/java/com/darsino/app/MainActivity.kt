@@ -565,8 +565,7 @@ fun GradeSelectScreen(onGrade: (String) -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-Row(verticalAlignment = Alignment.Bottom) { Text("بازینو", fontWeight = FontWeight.Bold, color = Purple, fontSize = 32.sp); Box(Modifier.padding(bottom = 6.dp).size(8.dp).background(Orange, RoundedCornerShape(50))) }        Spacer(Modifier.height(24.dp))
-Spacer(Modifier.height(24.dp))
+Row(verticalAlignment = Alignment.Bottom) { Text("بازینو", fontWeight = FontWeight.Bold, color = Purple, fontSize = 32.sp); Box(Modifier.padding(bottom = 6.dp).size(8.dp).background(Orange, RoundedCornerShape(50))) }Spacer(Modifier.height(24.dp))
         grades.chunked(2).forEach { row ->
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 row.forEach { name ->
