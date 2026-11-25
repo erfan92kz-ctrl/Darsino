@@ -512,7 +512,7 @@ fun ChatScreen(mode: String, title: String, modifier: Modifier = Modifier.fillMa
                     input = ""
                     loading = true
                     scope.launch {
-                        val answer = try { ask(mode, q) } catch (e: Exception) { "خطا در اتصال به سرور" }
+                        val answer = cannedAnswer(mode, q)
                         messages.add(false to answer)
                         loading = false
                     }
@@ -771,5 +771,13 @@ fun GameFlowScreen() {
                 modifier = Modifier.fillMaxWidth().height(56.dp)
             ) { Text("بازگشت", fontWeight = FontWeight.Bold) }
         }
+    }
+}
+
+fun cannedAnswer(mode: String, q: String): String {
+    return when (mode) {
+        "help" -> "این بخش فقط دربارهٔ اپ درسینو راهنمایی می‌کند. سؤالت را دربارهٔ امکانات اپ بپرس."
+        "support" -> "برای پشتیبانی با این شماره‌ها تماس بگیرید:\n09938925613\n09906045072"
+        else -> "این بخش فقط به سؤال‌های درسی جواب می‌دهد. سؤال درسی‌ات را بپرس."
     }
 }
