@@ -427,7 +427,7 @@ fun HomeContent(profile: Profile, onNav: (String) -> Unit) {
         ) {
             Column(Modifier.padding(16.dp)) {
                 Text("🎮 بازینو ", fontWeight = FontWeight.Bold, color = Purple, fontSize = 18.sp)
-                Text("با بازی یادبگیر و امتیاز بگیر!", color = Color.Gray)
+                Text("با بازی یاد بگیر و امتیاز بگیر!", color = Color.Gray)
             }
         }
     }
@@ -565,8 +565,8 @@ fun GradeSelectScreen(onGrade: (String) -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text("بازینو", fontWeight = FontWeight.Bold, color = Purple, fontSize = 22.sp)
-        Spacer(Modifier.height(24.dp))
+Row(verticalAlignment = Alignment.Bottom) { Text("بازینو", fontWeight = FontWeight.Bold, color = Purple, fontSize = 32.sp); Box(Modifier.padding(bottom = 6.dp).size(8.dp).background(Orange, RoundedCornerShape(50))) }        Spacer(Modifier.height(24.dp))
+Spacer(Modifier.height(24.dp))
         grades.chunked(2).forEach { row ->
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 row.forEach { name ->
