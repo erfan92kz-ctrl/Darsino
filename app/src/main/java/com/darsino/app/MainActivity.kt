@@ -753,6 +753,7 @@ fun GameFlowScreen() {
             verticalArrangement = Arrangement.Center
         ) {
             Text("پایه $g", fontWeight = FontWeight.Bold, color = Purple, fontSize = 22.sp)
+            selectedLesson?.let { sl -> questionsFor(g, sl).forEach { q -> Text(q, color = Color.Black, fontWeight = FontWeight.Bold); Spacer(Modifier.height(8.dp)) } }
             Spacer(Modifier.height(24.dp))
             lessonsFor(g).forEach { lesson ->
                 Button(
