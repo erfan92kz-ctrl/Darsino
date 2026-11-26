@@ -561,7 +561,7 @@ fun GradeSelectScreen(onGrade: (String) -> Unit) {
     val grades = listOf("اول", "دوم", "سوم", "چهارم", "پنجم", "ششم")
     val lastGrades = listOf("هفتم", "هشتم", "نهم")
     Column(
-        modifier = Modifier.fillMaxSize().background(Color.White).padding(20.dp),
+        modifier = Modifier.fillMaxSize().background(Color.White).padding(20.dp).verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
