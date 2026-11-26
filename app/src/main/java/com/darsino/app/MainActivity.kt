@@ -783,12 +783,3 @@ fun cannedAnswer(mode: String, q: String): String {
         else -> "این بخش فقط به سؤال‌های درسی جواب می‌دهد. سؤال درسی‌ات را بپرس."
     }
 }
-
-
-fun questionsFor(grade: String, lesson: String): List<String> {
-    return listOf(
-        "سؤال ۱ $lesson پایه $grade",
-        "سؤال ۲ $lesson پایه $grade",
-        "سؤال ۳ $lesson پایه $grade"
-    )
-}
