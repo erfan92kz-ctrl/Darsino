@@ -468,6 +468,7 @@ fun NewsScreen() {
     )
     LazyColumn(Modifier.fillMaxSize().padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item { Text("اخبار مدرسه", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = Purple) }
+        item { NewsSlider(news.map { Pair(it, "برای خواندن کامل خبر کلیک کنید") }) }
         items(news) { n ->
             Card(Modifier.fillMaxWidth()) { Text("📢 $n", modifier = Modifier.padding(16.dp)) }
         }
