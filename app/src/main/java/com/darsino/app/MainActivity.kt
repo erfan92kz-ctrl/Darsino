@@ -1,5 +1,8 @@
 package com.darsino.app
 
+import androidx.compose.foundation.Image
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.layout.width
@@ -577,6 +580,8 @@ fun GradeSelectScreen(onGrade: (String) -> Unit) {
     ) {
 Row(verticalAlignment = Alignment.Bottom) { Text("بازینو", fontWeight = FontWeight.Bold, color = Purple, fontSize = 32.sp); Box(Modifier.padding(bottom = 6.dp).size(8.dp).background(Orange, RoundedCornerShape(50))) }
 Spacer(Modifier.height(24.dp))
+HomeNewsSlider()
+Spacer(Modifier.height(16.dp))
 grades.chunked(2).forEach { row ->            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 row.forEach { name ->
                     Button(
@@ -882,6 +887,72 @@ fun NewsSlider(news: List<Pair<String, String>>) {
         Spacer(Modifier.height(10.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
             news.indices.forEach { i ->
+                Box(
+                    Modifier
+                        .size(if (i == index) 10.dp else 8.dp)
+                        .background(
+                            if (i == index) Orange else Purple.copy(alpha = 0.3f),
+                            RoundedCornerShape(50)
+                        )
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun HomeNewsSlider() {
+    val newsItems = listOf(
+        Triple("لغو شد", "تعطیلی مدارس فردا لغو شد", R.mipmap.news1),
+        Triple("امتحانات", "امتحانات میان‌ترم هفته آینده برگزار می‌شود", R.mipmap.news2),
+        Triple("ثبت نام", "ثبت‌نام کلاس‌های تابستانی آغاز شد", R.mipmap.news3)
+    )
+    var index by remember { mutableStateOf(0) }
+    LaunchedEffect(Unit) {
+        while (true) {
+            delay(4000)
+            index = (index + 1) % newsItems.size
+        }
+    }
+    val title = newsItems[index].first
+    val desc = newsItems[index].second
+    val img = newsItems[index].third
+    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(180.dp)
+                .clip(RoundedCornerShape(20.dp))
+                .background(Purple)
+                .padding(12.dp)
+        ) {
+            Row(modifier = Modifier.fillMaxSize(), verticalAlignment = Alignment.CenterVertically) {
+                Image(
+                    painter = painterResource(img),
+                    contentDescription = title,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxHeight()
+                        .clip(RoundedCornerShape(16.dp))
+                )
+                Spacer(Modifier.width(12.dp))
+                Column(modifier = Modifier.weight(1.3f), horizontalAlignment = Alignment.End) {
+                    Text(title, color = Color.White, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+                    Spacer(Modifier.height(6.dp))
+                    Text(desc, color = Color.White, fontSize = 13.sp)
+                    Spacer(Modifier.height(10.dp))
+                    Button(
+                        onClick = { },
+                        colors = ButtonDefaults.buttonColors(containerColor = Orange, contentColor = Color.White),
+                        shape = RoundedCornerShape(12.dp)
+                    ) { Text("مشاهده") }
+                }
+            }
+        }
+        Spacer(Modifier.height(10.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            newsItems.indices.forEach { i ->
                 Box(
                     Modifier
                         .size(if (i == index) 10.dp else 8.dp)
