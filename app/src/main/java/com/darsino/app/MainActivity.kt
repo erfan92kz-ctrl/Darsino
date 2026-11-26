@@ -1,5 +1,14 @@
 package com.darsino.app
 
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.background
+import androidx.compose.runtime.LaunchedEffect
+import kotlinx.coroutines.delay
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -823,5 +832,64 @@ fun QuestionScreen(grade: String, lesson: String, onBack: () -> Unit) {
             shape = RoundedCornerShape(16.dp),
             modifier = Modifier.fillMaxWidth().height(52.dp)
         ) { Text("بازگشت", fontWeight = FontWeight.Bold) }
+    }
+}
+
+
+@Composable
+fun NewsSlider(news: List<Pair<String, String>>) {
+    var index by remember { mutableStateOf(0) }
+    LaunchedEffect(Unit) {
+        while (true) {
+            delay(4000)
+            index = (index + 1) % news.size
+        }
+    }
+    val item = news[index]
+    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(180.dp)
+                .clip(RoundedCornerShape(20.dp))
+                .background(Brush.horizontalGradient(listOf(Purple, Color(0xFF7B3FE4))))
+                .padding(16.dp)
+        ) {
+            Row(modifier = Modifier.fillMaxSize(), verticalAlignment = Alignment.CenterVertically) {
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxHeight()
+                        .clip(RoundedCornerShape(16.dp))
+                        .background(Color.White.copy(alpha = 0.15f)),
+                    contentAlignment = Alignment.Center
+                ) { Text("عکس", color = Color.White) }
+                Spacer(Modifier.width(12.dp))
+                Column(modifier = Modifier.weight(1.3f), horizontalAlignment = Alignment.End) {
+                    Text(item.first, color = Color.White, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+                    Spacer(Modifier.height(6.dp))
+                    Text(item.second, color = Color.White, fontSize = 13.sp)
+                    Spacer(Modifier.height(10.dp))
+                    Button(
+                        onClick = { },
+                        colors = ButtonDefaults.buttonColors(containerColor = Orange, contentColor = Color.White),
+                        shape = RoundedCornerShape(12.dp)
+                    ) { Text("مشاهده") }
+                }
+            }
+        }
+        Spacer(Modifier.height(10.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            news.indices.forEach { i ->
+                Box(
+                    Modifier
+                        .size(if (i == index) 10.dp else 8.dp)
+                        .background(
+                            if (i == index) Orange else Purple.copy(alpha = 0.3f),
+                            RoundedCornerShape(50)
+                        )
+                )
+            }
+        }
     }
 }
