@@ -746,14 +746,13 @@ fun GameFlowScreen() {
     val g = grade
     if (g == null) {
         GradeSelectScreen { grade = it }
-    } else {
+    } else if (selectedLesson != null) { QuestionScreen(g, selectedLesson!!) { selectedLesson = null } } else {
         Column(
             modifier = Modifier.fillMaxSize().background(Color.White).padding(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
             Text("پایه $g", fontWeight = FontWeight.Bold, color = Purple, fontSize = 22.sp)
-            if (selectedLesson != null) { for (q in questionsFor(g, selectedLesson!!)) { Text(q, color = Color.Black, fontWeight = FontWeight.Bold); Spacer(Modifier.height(8.dp)) } }
             Spacer(Modifier.height(24.dp))
             lessonsFor(g).forEach { lesson ->
                 Button(
@@ -781,5 +780,48 @@ fun cannedAnswer(mode: String, q: String): String {
         "help" -> "این بخش فقط دربارهٔ اپ درسینو راهنمایی می‌کند. سؤالت را دربارهٔ امکانات اپ بپرس."
         "support" -> "من اینجا هستم تا  مشکلات اپ اپلیکیشن رو برات حل کنم!"
         else -> "این بخش فقط به سؤال‌های درسی جواب می‌دهد. سؤال درسی‌ات را بپرس."
+    }
+}
+
+fun questionsFor(grade: String, lesson: String): List<String> {
+    return listOf(
+        "سؤال ۱ $lesson پایه $grade",
+        "سؤال ۲ $lesson پایه $grade",
+        "سؤال ۳ $lesson پایه $grade"
+    )
+}
+
+@Composable
+fun QuestionScreen(grade: String, lesson: String, onBack: () -> Unit) {
+    val questions = questionsFor(grade, lesson)
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Purple)
+            .padding(20.dp)
+            .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Spacer(Modifier.height(20.dp))
+        questions.forEach { q ->
+            Text(q, color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 20.sp)
+            Spacer(Modifier.height(12.dp))
+            listOf("گزینه ۱", "گزینه ۲", "گزینه ۳", "گزینه ۴").forEach { opt ->
+                Button(
+                    onClick = { },
+                    colors = ButtonDefaults.buttonColors(containerColor = Orange, contentColor = Color.Black),
+                    shape = RoundedCornerShape(16.dp),
+                    modifier = Modifier.fillMaxWidth().height(52.dp)
+                ) { Text(opt, fontWeight = FontWeight.Bold) }
+                Spacer(Modifier.height(10.dp))
+            }
+            Spacer(Modifier.height(20.dp))
+        }
+        Button(
+            onClick = onBack,
+            colors = ButtonDefaults.buttonColors(containerColor = Orange, contentColor = Color.Black),
+            shape = RoundedCornerShape(16.dp),
+            modifier = Modifier.fillMaxWidth().height(52.dp)
+        ) { Text("بازگشت", fontWeight = FontWeight.Bold) }
     }
 }
