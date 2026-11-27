@@ -348,14 +348,15 @@ fun MainScreen(profile: Profile, onLogout: () -> Unit) {
                         }
                     },
                     actions = {
+                        ThemeToggleButton()
                         if (isTeacher) {
                             IconButton(onClick = { section = "exam" }) { ExamLogo() }
                         }
                     }
                 )
             }
-        ) { padding ->
-            Box(Modifier.padding(padding).fillMaxSize()) {
+                    ) { padding ->
+                Box(Modifier.padding(padding).fillMaxSize().background(if (ThemeState.dark) Color(0xFF121212) else Color.White)) {
                 when (section) {
                     "home" -> HomeContent(profile) { section = it }
                     "status" -> StatusScreen(profile, onLogout)
