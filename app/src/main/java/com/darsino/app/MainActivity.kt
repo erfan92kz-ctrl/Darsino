@@ -964,3 +964,25 @@ fun HomeNewsSlider() {
         }
     }
 }
+
+object ThemeState {
+    var dark by mutableStateOf(false)
+}
+
+@Composable
+fun ThemeToggleButton() {
+    Button(
+        onClick = { ThemeState.dark = !ThemeState.dark },
+        colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Purple),
+        shape = RoundedCornerShape(50)
+    ) { Text(if (ThemeState.dark) "🌙" else "☀️", fontSize = 20.sp) }
+}
+
+@Composable
+fun AppThemeBox(content: @Composable () -> Unit) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(if (ThemeState.dark) Color(0xFF121212) else Color.White)
+    ) { content() }
+}
