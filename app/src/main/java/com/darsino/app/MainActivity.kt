@@ -903,9 +903,9 @@ fun NewsSlider(news: List<Pair<String, String>>) {
 @Composable
 fun HomeNewsSlider() {
     val newsItems = listOf(
-        Triple("لغو شد", "تعطیلی مدارس فردا لغو شد", R.mipmap.news1),
-        Triple("امتحانات", "امتحانات میان‌ترم هفته آینده برگزار می‌شود", R.mipmap.news2),
-        Triple("ثبت نام", "ثبت‌نام کلاس‌های تابستانی آغاز شد", R.mipmap.news3)
+        Triple("لغو شد", "تعطیلی مدارس فردا لغو شد", R.mipmap.ic_launcher),
+        Triple("امتحانات", "امتحانات میان‌ترم هفته آینده برگزار می‌شود", R.mipmap.ic_launcher),
+        Triple("ثبت نام", "ثبت‌نام کلاس‌های تابستانی آغاز شد", R.mipmap.ic_launcher)
     )
     var index by remember { mutableStateOf(0) }
     LaunchedEffect(Unit) {
